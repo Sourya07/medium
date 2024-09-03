@@ -26,9 +26,12 @@ app.use('/api/v1/blog/*', async (c, next) => {
     c.status(401);
     return c.json({ error: "unauthorized" });
   }
+  //// here is the issue
   c.set('userId', payload.id);
   await next()
 })
+
+
 
 app.post('/api/v1/signup', async (c) => {
   const prisma = new PrismaClient({
