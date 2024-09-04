@@ -27,7 +27,7 @@ app.use('/api/v1/blog/*', async (c, next) => {
     return c.json({ error: "unauthorized" });
   }
   //// here is the issue
-  c.set('userId', payload.id);
+
   await next()
 })
 
