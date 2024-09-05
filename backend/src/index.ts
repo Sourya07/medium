@@ -14,6 +14,10 @@ const app = new Hono<{
 
 }>();
 
+app.route("/api/v1/user", userRouter);
+app.route("/api/v1/blog", blogRouter);
+
+
 app.use('/api/v1/blog/*', async (c, next) => {
   const jwt = c.req.header('Authorization');
   if (!jwt) {
@@ -33,7 +37,7 @@ app.use('/api/v1/blog/*', async (c, next) => {
 
 
 
-app.post('/api/v1/signup', async (c) => {
+app.post('/api/v1/user/signup', async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
@@ -43,7 +47,8 @@ app.post('/api/v1/signup', async (c) => {
     const user = await prisma.user.create({
       data: {
         email: body.email,
-        password: body.password
+        password: body.password,
+        name: body.name
       }
     });
     const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
@@ -55,7 +60,7 @@ app.post('/api/v1/signup', async (c) => {
 })
 
 
-app.post('/api/v1/signin', async (c) => {
+app.post('/api/v1/user/signin', async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
