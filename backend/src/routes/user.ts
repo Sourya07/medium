@@ -21,6 +21,8 @@ userRouter.post('/signup', async (c) => {
     }).$extends(withAccelerate());
 
     const body = await c.req.json();
+    console.log(body)
+
     try {
         const user = await prisma.user.create({
             data: {
@@ -33,8 +35,11 @@ userRouter.post('/signup', async (c) => {
         return c.json({ jwt });
     } catch (e) {
         c.status(403);
-        return c.json({ error: "error while signing up" });
+        console.log(e);
+        return c.json({ error: "error while signing upppp" });
+
     }
+
 })
 
 
