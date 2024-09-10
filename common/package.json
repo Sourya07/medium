@@ -1,5 +1,5 @@
 {
-  "name": "@100xdevs/medium-common",
+  "name": "@priyanshusingh08/medium-common",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zod": "^3.22.4"
+    "zod": "^3.23.8"
   }
 }
