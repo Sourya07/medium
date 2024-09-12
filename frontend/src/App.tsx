@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Signup } from './pages/Signup.tsx'
-import { Signin } from './pages/Signin'
+import { Signin } from './pages/Signin.tsx'
 import { Blog } from './pages/Blog.tsx'
 
 function App() {
@@ -19,3 +19,4 @@ function App() {
 }
 
 export default App
+
